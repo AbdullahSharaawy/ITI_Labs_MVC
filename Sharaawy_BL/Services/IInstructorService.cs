@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sharaawy_BL.ViewsModel.InstructorVM;
+using Sharaawy_BL.DTO;
 using Sharaawy_DAL;
 using Sharaawy_DAL.Enterfaces;
 using Sharaawy_DAL.Entities;
@@ -14,9 +14,9 @@ namespace Sharaawy_BL.Services
     {
 
         public List<Instructor> GetAll();
-        public bool Update(EditInstructor instructor);
+        public bool Update(InstructorDTO instructor);
         public bool Delete(int id);
-        public bool Create(EditInstructor instructor);
-        public EditInstructor GetEditInstructorInfo(int id);
+        public bool Create(InstructorDTO instructor);
+        public InstructorDTO GetEditInstructorInfo(int id);
     }
 }

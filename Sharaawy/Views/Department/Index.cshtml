@@ -1,0 +1,31 @@
+﻿@model List<DepartmentDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="container mt-4 pt-5">
+    <!-- Added pt-5 -->
+    <table id="myTable" class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Manager</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DepartmentDTO item in @Model)
+            {
+                <tr>
+                    <td class="align-middle">@item.ID</td>
+                    <td class="align-middle">@item.Name</td>
+                    <td class="align-middle">@item.Manager</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+</div>

@@ -2,8 +2,8 @@
 using Sharaawy_DAL.DataBase;
 using Sharaawy_DAL.Entities;
 using Sharaawy_BL.Services;
-using Sharaawy_BL.ViewsModel;
-using Sharaawy_BL.ViewsModel.InstructorVM;
+using Sharaawy_BL.DTO;
+
 using System.Net;
 namespace Sharaawy.Controllers
 {
@@ -38,7 +38,7 @@ namespace Sharaawy.Controllers
             return View("UpdateInstructor", _IS.GetEditInstructorInfo(id));
         }
         [HttpPost]
-        public IActionResult SaveEdit(EditInstructor EI)
+        public IActionResult SaveEdit(InstructorDTO EI)
         {
             
                 if(_IS.Update(EI))
@@ -54,14 +54,14 @@ namespace Sharaawy.Controllers
             
         }
         [HttpGet]
-        public IActionResult NewInstructor(EditInstructor NI)
+        public IActionResult NewInstructor(InstructorDTO NI)
         {
             NI.departments = _DS.GetAll();
             NI.courses = _CS.GetAll();
             return View("NewInstructor", NI);
         }
         [HttpPost]
-        public IActionResult AddNewInstructor(EditInstructor NI)
+        public IActionResult AddNewInstructor(InstructorDTO NI)
         {
 
            

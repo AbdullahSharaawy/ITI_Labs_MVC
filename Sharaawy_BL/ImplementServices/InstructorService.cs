@@ -1,5 +1,5 @@
 ﻿using Sharaawy_BL.Services;
-using Sharaawy_BL.ViewsModel.InstructorVM;
+using Sharaawy_BL.DTO;
 using Sharaawy_DAL.Enterfaces;
 using Sharaawy_DAL.Entities;
 using System;
@@ -27,14 +27,14 @@ namespace Sharaawy_BL.ImplementServices
         {
            return _ICRUD.GetAll();
         }
-        public EditInstructor GetEditInstructorInfo(int id) {
-            EditInstructor EditInstructer = new EditInstructor();
+        public InstructorDTO GetEditInstructorInfo(int id) {
+            InstructorDTO EditInstructer = new InstructorDTO();
             EditInstructer.instructor = _ICRUD.GetByID(id);
             EditInstructer.departments = _DCRUD.GetAll();
             EditInstructer.courses = _CCRUD.GetAll();
             return EditInstructer;
         }
-        public bool Update(EditInstructor EI)
+        public bool Update(InstructorDTO EI)
         {
             if(EI==null)
                 return false;
@@ -62,7 +62,7 @@ namespace Sharaawy_BL.ImplementServices
             }
             return false;
         }
-        public bool Create(EditInstructor EI)
+        public bool Create(InstructorDTO EI)
         {
             if (EI == null) 
             {

@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Sharaawy_BL.DTO;
+using Sharaawy_BL.Mapperly;
 namespace Sharaawy_BL.ImplementServices
 {
    public class DepartmentService:IDepartmentService
@@ -21,6 +22,13 @@ namespace Sharaawy_BL.ImplementServices
         public List<Department> GetAll()
         {
             return _CRUD.GetAll();
+        }
+        public List<DepartmentDTO> ViewDepartments()
+        {
+            var Dep = GetAll();
+            var mapping = new DepartmentMapper();
+            List<DepartmentDTO> departmetnsDTO=mapping.MapToDepartmentDTOList(Dep);
+            return departmetnsDTO;
         }
     }
 }

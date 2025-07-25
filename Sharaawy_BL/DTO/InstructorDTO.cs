@@ -1,8 +1,8 @@
 ﻿using Sharaawy_DAL.Entities;
 
-namespace Sharaawy_BL.ViewsModel.InstructorVM
+namespace Sharaawy_BL.DTO
 {
-    public class EditInstructor
+    public class InstructorDTO
     {
         public Instructor instructor { get; set; }
         public List<Department> departments { get; set; }

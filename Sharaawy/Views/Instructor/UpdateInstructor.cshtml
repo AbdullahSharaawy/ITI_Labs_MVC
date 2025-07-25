@@ -1,36 +1,36 @@
-﻿@model EditInstructor
+﻿@model InstructorDTO
 
-<form action="/Instructor/SaveEdit" method="post" enctype="multipart/form-data">
+<form action="/Instructor/SaveEdit" method="post" enctype="multipart/form-data" class="needs-validation">
     @Html.AntiForgeryToken()
 
     <!-- Hidden field for ID if needed -->
-    <div>
-        <input type="hidden" name="instructor.Id" value="@Model.instructor.Id" />
+    <div class="mb-3">
+        <input type="hidden" class="form-control" name="instructor.Id" value="@Model.instructor.Id" />
 
     </div>
     
     <!-- Correctly named inputs with model hierarchy -->
-    <div>
-        <input type="text" name="instructor.Name" value="@Model.instructor.Name" />
+    <div class="mb-3">
+        <input class="form-control" type="text" name="instructor.Name" value="@Model.instructor.Name" />
 
     </div>
-    <div>
-        <input type="number" name="instructor.Salary" value="@Model.instructor.Salary" />
+    <div class="mb-3">
+        <input class="form-control" type="number" name="instructor.Salary" value="@Model.instructor.Salary" />
 
     </div>
-    <div>
-        <input type="text" name="instructor.Address" value="@Model.instructor.Address" />
+    <div class="mb-3">
+        <input class="form-control" type="text" name="instructor.Address" value="@Model.instructor.Address" />
     </div>
     
     <!-- Proper file input if needed -->
-    <div>
-        <input type="text" name="instructor.Image" value="@Model.instructor.Image" />
+    <div class="mb-3">
+        <input class="form-control" type="text" name="instructor.Image" value="@Model.instructor.Image" />
 
     </div>
     <!-- OR for existing image path -->
     
     <!-- Simplified select for Course -->
-    <div>
+    <div class="mb-3">
         <select name="instructor.CrsId">
             @foreach (var item in Model.courses)
             {
@@ -43,7 +43,7 @@
 
     </div>
     <!-- Simplified select for Department -->
-    <div>
+    <div class="mb-3">
         <select name="instructor.DeptId">
             @foreach (var item in Model.departments)
             {
@@ -56,5 +56,5 @@
     </div>
     
     <!-- Properly styled submit button -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" type="submit" class="btn btn-primary">Submit</button>
 </form>
