@@ -1,0 +1,60 @@
+﻿@model EditInstructor
+
+<form action="/Instructor/SaveEdit" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <!-- Hidden field for ID if needed -->
+    <div>
+        <input type="hidden" name="instructor.Id" value="@Model.instructor.Id" />
+
+    </div>
+    
+    <!-- Correctly named inputs with model hierarchy -->
+    <div>
+        <input type="text" name="instructor.Name" value="@Model.instructor.Name" />
+
+    </div>
+    <div>
+        <input type="number" name="instructor.Salary" value="@Model.instructor.Salary" />
+
+    </div>
+    <div>
+        <input type="text" name="instructor.Address" value="@Model.instructor.Address" />
+    </div>
+    
+    <!-- Proper file input if needed -->
+    <div>
+        <input type="text" name="instructor.Image" value="@Model.instructor.Image" />
+
+    </div>
+    <!-- OR for existing image path -->
+    
+    <!-- Simplified select for Course -->
+    <div>
+        <select name="instructor.CrsId">
+            @foreach (var item in Model.courses)
+            {
+                <option value="@item.Id" selected="@(Model.instructor.CrsId == item.Id)">
+                    @item.Name
+                </option>
+            }
+        </select>
+
+
+    </div>
+    <!-- Simplified select for Department -->
+    <div>
+        <select name="instructor.DeptId">
+            @foreach (var item in Model.departments)
+            {
+                <option value="@item.Id" selected="@(Model.instructor.DeptId == item.Id)">
+                    @item.Name
+                </option>
+            }
+        </select>
+
+    </div>
+    
+    <!-- Properly styled submit button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

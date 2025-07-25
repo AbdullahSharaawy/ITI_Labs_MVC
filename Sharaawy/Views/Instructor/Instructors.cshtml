@@ -1,0 +1,32 @@
+﻿@model List<Instructor>
+
+<div class="container mt-4 pt-5">
+    <!-- Added pt-5 -->
+    <table id="myTable" class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Salary</th>
+                <th class="text-center">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Instructor item in @Model)
+            {
+                <tr>
+                    <td class="align-middle">@item.Id</td>
+                    <td class="align-middle">@item.Name</td>
+                    <td class="align-middle text-success font-weight-bold">$@item.Salary</td>
+                    <td class="text-center">
+                        <img src="/images/@item.Image" alt="Instructor Image" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+                        <a class="btn btn-primary" href="/Instructor/UpdateInstructor?id=@item.Id">Edit</a>
+                        <a class="btn btn-primary" href="/Instructor/DeleteInstructor?id=@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-action="NewInstructor" asp-controller="Instructor" >New</a>
+
+</div>

@@ -1,0 +1,38 @@
+﻿@model EditInstructor
+@{
+    ViewData["Title"] = "NewInstructor";
+    SelectList selectDeptItems = new SelectList(Model.departments, "Id", "Name");
+    SelectList selectCrsItems = new SelectList(Model.courses, "Id", "Name");
+}
+
+<h1>NewInstructor</h1>
+
+<form asp-action="AddNewInstructor" asp-controller="Instructor" method="post" class="needs-validation">
+    <div class="mb-3">
+        <label asp-for="@Model.instructor.Name"></label>
+        <input class="form-control" asp-for="@Model.instructor.Name" />
+    </div> 
+    <div class="mb-3">
+        <label asp-for="@Model.instructor.Image" class="form-label"></label>
+        <input class="form-control" asp-for="@Model.instructor.Image" />
+    </div >
+    <div class="mb-3">
+        <label asp-for="@Model.instructor.Salary" class="form-label"></label>
+        <input class="form-control" asp-for="@Model.instructor.Salary" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.instructor.Address" class="form-label"></label>
+        <input class="form-control" asp-for="@Model.instructor.Address" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.instructor.DeptId" class="form-label"></label>
+        <select class="form-control" asp-for="@Model.instructor.DeptId" asp-items=selectDeptItems>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.instructor.CrsId" class="form-label"></label>
+        <select class="form-control" asp-for="@Model.instructor.CrsId" asp-items=selectCrsItems>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
