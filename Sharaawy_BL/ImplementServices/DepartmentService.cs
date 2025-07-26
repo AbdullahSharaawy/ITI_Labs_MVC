@@ -30,5 +30,11 @@ namespace Sharaawy_BL.ImplementServices
             List<DepartmentDTO> departmetnsDTO=mapping.MapToDepartmentDTOList(Dep);
             return departmetnsDTO;
         }
+        public Department ViewDepartment(int id)
+        {
+            var Dept=_CRUD.GetByID(id);
+            return Dept;
+        }
+
     }
 }

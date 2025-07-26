@@ -15,7 +15,7 @@ var con = builder.Configuration.GetConnectionString("DefaultConnection");
 
 //builder.Services.AddDbContext<SharaawyContext>(options => options.UseSqlServer(con));
 builder.Services.AddDbContext<SharaawyContext>(options =>
-options.UseSqlServer(
+options.UseLazyLoadingProxies().UseSqlServer(
         con,
         b => b.MigrationsAssembly("Sharaawy_DAL")  // Specify migrations assembly here
     )

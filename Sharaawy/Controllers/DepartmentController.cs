@@ -16,5 +16,9 @@ namespace Sharaawy.Controllers
         {
             return View("Index",_DS.ViewDepartments());
         }
+        public IActionResult DepartmentDetails(int id) 
+        {
+            return View("Department",_DS.ViewDepartment(id));
+        }
     }
 }

@@ -13,7 +13,7 @@
                 <th class="text-center">ID</th>
                 <th class="text-center">Name</th>
                 <th class="text-center">Manager</th>
-                
+                <th class="text-center">More Info</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +23,7 @@
                     <td class="align-middle">@item.ID</td>
                     <td class="align-middle">@item.Name</td>
                     <td class="align-middle">@item.Manager</td>
+                    <td><a href="/Department/DepartmentDetails?id=@item.ID">More Details</a></td>
                 </tr>
             }
         </tbody>

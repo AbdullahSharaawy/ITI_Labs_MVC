@@ -24,5 +24,6 @@ namespace Sharaawy_BL.ImplementServices
         {
             return _CRUD.GetAll();
         }
+        
     }
 }

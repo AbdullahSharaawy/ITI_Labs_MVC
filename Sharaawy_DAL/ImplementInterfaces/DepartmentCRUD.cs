@@ -35,7 +35,7 @@ namespace Sharaawy_DAL.ImplementInterfaces
 
         public Department GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _context.Departments.FirstOrDefault(i => i.Id == id);
         }
 
         public void Update(Department entity)

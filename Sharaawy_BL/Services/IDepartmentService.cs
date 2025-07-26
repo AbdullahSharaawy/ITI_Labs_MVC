@@ -12,5 +12,6 @@ namespace Sharaawy_BL.Services
     {
         public List<Department> GetAll();
         public List<DepartmentDTO> ViewDepartments();
+        public Department ViewDepartment(int ID);
     }
 }
