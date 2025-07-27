@@ -19,14 +19,41 @@
                     <td class="align-middle">@item.Name</td>
                     <td class="align-middle text-success font-weight-bold">$@item.Salary</td>
                     <td class="text-center">
-                        <img src="/images/@item.Image" alt="Instructor Image" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+                        <img src="~/Files/@item.Image" alt="Instructor Image" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
                         <a class="btn btn-primary" href="/Instructor/UpdateInstructor?id=@item.Id">Edit</a>
                         <a class="btn btn-primary" href="/Instructor/DeleteInstructor?id=@item.Id">Delete</a>
+                        <a class="btn btn-primary" href="/Instructor/InstructorDetails?id=@item.Id" onclick="InsInfo(@item.Id)">Details</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
     <a class="btn btn-primary" asp-action="NewInstructor" asp-controller="Instructor" >New</a>
-
+    <div style="visibility: hidden;" id="MoreInfo">
+    </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function InsInfo(id) { 
+        event.preventDefault();
+        console.log('Fetching instructor details for ID:', id);
+      var container=document.getElementById("MoreInfo");
+        container.innerHTML = "";
+      container.style.visibility="visible";
+       
+            $.ajax({
+            url: "/Instructor/InstructorDetails?id="+id, success: function (result) {
+                    console.log('Received result:', result);
+                    let list=document.createElement("ul");
+                    for(let r of result)
+                    {
+                        let item=document.createElement("li");
+                        item.innerHTML="Department: "+r.departmentName+", Course: "+ r.courseName;
+                        list.appendChild(item);                   
+                    }
+                    container.appendChild(list);
+                }
+            });
+        
+    }
+</script>

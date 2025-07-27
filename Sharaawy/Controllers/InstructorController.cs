@@ -5,6 +5,7 @@ using Sharaawy_BL.Services;
 using Sharaawy_BL.DTO;
 
 using System.Net;
+using Microsoft.CodeAnalysis.Scripting;
 namespace Sharaawy.Controllers
 {
     public class InstructorController : Controller
@@ -77,5 +78,14 @@ namespace Sharaawy.Controllers
 
             }
         }
+        public IActionResult InstructorDetails(int id)
+        {
+            return Json(_IS.GetInstructorInfo(id));
+        }
+        public IActionResult Courses(int DeptID)
+        {
+            return Json(_CS.GetAll().Where(c => c.DeptId == DeptID).Select(c=>new {Id=c.Id,Name=c.Name}).ToList());
+        }
     }
 }
+

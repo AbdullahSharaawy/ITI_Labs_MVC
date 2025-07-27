@@ -27,4 +27,5 @@ public  class Instructor
     public virtual Course? Crs { get; set; }
 
     public virtual Department? Dept { get; set; }
+
 }

@@ -18,5 +18,6 @@ namespace Sharaawy_BL.Services
         public bool Delete(int id);
         public bool Create(InstructorDTO instructor);
         public InstructorDTO GetEditInstructorInfo(int id);
+        public List<InstructorDetailsDTO> GetInstructorInfo(int id);
     }
 }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sharaawy_BL.DTO
 {
-    public class DepartmentDTO
+    public class InstructorDetailsDTO
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Manager { get; set; }
+        public string CourseName { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

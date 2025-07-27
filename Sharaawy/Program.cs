@@ -28,6 +28,7 @@ builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IInstructorService, InstructorService>();
 
+
 var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.

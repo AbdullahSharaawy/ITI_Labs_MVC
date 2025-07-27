@@ -20,10 +20,10 @@
             @foreach (DepartmentDTO item in @Model)
             {
                 <tr>
-                    <td class="align-middle">@item.ID</td>
+                    <td class="align-middle">@item.Id</td>
                     <td class="align-middle">@item.Name</td>
                     <td class="align-middle">@item.Manager</td>
-                    <td><a href="/Department/DepartmentDetails?id=@item.ID">More Details</a></td>
+                    <td><a href="/Department/DepartmentDetails?id=@item.Id">More Details</a></td>
                 </tr>
             }
         </tbody>

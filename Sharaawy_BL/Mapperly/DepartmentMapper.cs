@@ -11,10 +11,11 @@ namespace Sharaawy_BL.Mapperly
     [Mapper]
     public partial class DepartmentMapper
     {
-        [MapProperty(nameof(Department.Id), nameof(DepartmentDTO.ID))]
-        [MapProperty(nameof(Department.Name), nameof(DepartmentDTO.Name))]
-        [MapProperty(nameof(Department.Manager), nameof(DepartmentDTO.Manager))]
+       // [MapProperty(nameof(Department.Id), nameof(DepartmentDTO.ID))]
+        //[MapProperty(nameof(Department.Name), nameof(DepartmentDTO.Name))]
+        //[MapProperty(nameof(Department.Manager), nameof(DepartmentDTO.Manager))]
         public partial DepartmentDTO MapToDepartmentDTO(Department department);
         public partial List<DepartmentDTO> MapToDepartmentDTOList(List<Department> departments);
     }
 }
+ 

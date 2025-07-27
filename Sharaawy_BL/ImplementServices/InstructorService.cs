@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Sharaawy_BL.Helper;
+using System.Collections;
 
 namespace Sharaawy_BL.ImplementServices
 {
@@ -25,7 +27,7 @@ namespace Sharaawy_BL.ImplementServices
 
         public List<Instructor> GetAll()
         {
-           return _ICRUD.GetAll();
+			return _ICRUD.GetAll();
         }
         public InstructorDTO GetEditInstructorInfo(int id) {
             InstructorDTO EditInstructer = new InstructorDTO();
@@ -68,20 +70,42 @@ namespace Sharaawy_BL.ImplementServices
             {
                 return false;
             }
-            if (EI.instructor.Name != null && EI.instructor.DeptId != null && EI.instructor.CrsId != null && EI.instructor.Image != null && EI.instructor.Address != null)
+            if (EI.instructor.Name != null && EI.instructor.DeptId != null && EI.instructor.CrsId != null  && EI.instructor.Address != null)
             {
                 var instructor = new Instructor();
                 instructor.Name = EI.instructor.Name;
-                instructor.Image = EI.instructor.Image;
+               
                 instructor.Salary = EI.instructor.Salary;
                 instructor.Address = EI.instructor.Address;
                 instructor.DeptId = EI.instructor.DeptId;
                 instructor.CrsId = EI.instructor.CrsId;
-               
+                instructor.Image = Upload.UploadFile("Files", EI.file);
+
                 _ICRUD.Create(instructor);
                 return true;
             }
             return false ;
         }
+
+		public List<InstructorDetailsDTO> GetInstructorInfo(int id)
+		{
+            
+			Instructor ins=_ICRUD.GetByID(id);
+            List<Course> courses = _CCRUD.GetAll().Where(c=>c.Id==ins.CrsId).ToList();
+            List<Department> departments=_DCRUD.GetAll().Where(d=>d.Id==ins.DeptId).ToList();
+            List<InstructorDetailsDTO> instructorDetailsDTOs = new List<InstructorDetailsDTO>();
+            instructorDetailsDTOs = (from course in courses
+                                     join department in departments
+                                     on course.DeptId equals department.Id
+                                     select new InstructorDetailsDTO
+                                     {
+                                         CourseName = course.Name,
+                                         DepartmentName = department.Name
+                                         // Map other properties here
+                                     }).ToList();
+         return instructorDetailsDTOs;
+        }
+
+        
     }
 }
